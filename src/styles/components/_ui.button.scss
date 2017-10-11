@@ -1,0 +1,18 @@
+///* ========================================================================
+//   # COMPONENTS: UI BUTTON
+//   ======================================================================== */
+
+.c-ui-button { @include uiButton; }
+
+/* Modifieurs
+   ========================================================================== */
+
+.c-ui-button--bordered { @include uiButtonBordered; }
+
+/* Thème
+   ========================================================================== */
+
+.c-ui-button--t0 { @include uiButton0; }
+.c-ui-button--t1 { @include uiButton1; }
+.c-ui-button--t2 { @include uiButton2; }
+.c-ui-button--t2W { @include uiButton2W; }

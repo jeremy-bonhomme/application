@@ -1,0 +1,40 @@
+
+<form [formGroup]="cocktailForm" (ngSubmit)="createCocktail()">
+  <div class="c-edit__group">
+    <label>Nom</label>
+    <input formControlName="name" type="text" required="required"/>
+    <div class="c-edit-input__error" *ngIf="name.invalid &amp;&amp; ( name.dirty || name.touched )">
+      <div class="c-edit-input__required" *ngIf="name.errors.required">Le nom est requis</div>
+    </div>
+  </div>
+  <div class="c-edit__group">
+    <label>Lien de l'image</label>
+    <input formControlName="img" type="text" required="required"/>
+    <div class="c-edit-input__error" *ngIf="img.invalid &amp;&amp; ( img.dirty || img.touched )">
+      <div class="c-edit-input__required" *ngIf="img.errors.required">L'URL de l'image est requise</div>
+    </div>
+  </div>
+  <div class="c-edit__group">
+    <label>Description</label>
+    <textarea formControlName="desc"></textarea>
+    <div class="c-edit-input__error" *ngIf="desc.invalid &amp;&amp; ( desc.dirty || desc.touched )">
+      <div class="c-edit-input__required" *ngIf="desc.errors.required">La description est requise</div>
+    </div>
+  </div>
+  <div class="c-edit__container--formarray">
+    <button class="c-ui-button--bordered c-ui-button--t0" type="button" (click)="addIngredient()">Ajouter des ingrédients</button>
+    <div class="c-edit__formarray" formArrayName="ingredients">
+      <div class="c-edit__formgroup" [formGroup]="ingredient" *ngFor="let ingredient of cocktailForm.get('ingredients').controls; let i = index">
+        <input placeholder="Nom de l'ingrédient {{ i + 1 }}" formControlName="name" type="text" required="required"/>
+        <input placeholder="Quantité de l'ingrédient {{ i + 1 }}" formControlName="quantity" type="text" required="required"/>
+        <button class="c-ui-button__edit-cross" type="button" (click)="removeIngredient( i )" uiIcon="close"></button>
+      </div>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+  <div class="c-edit__container">
+    <button class="c-ui-button--bordered c-ui-button--t2W c-ui-button--invalid" [disabled]="cocktailForm.invalid">Sauvegarder</button>
+    <button class="c-ui-button--bordered" [routerLink]="['../']">Annuler</button>
+  </div>
+  <p *ngIf="isSubmitted">{{ add }}</p>
+</form>

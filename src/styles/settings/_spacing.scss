@@ -1,0 +1,22 @@
+///* ========================================================================
+//   # SETTINGS: SPACING
+//   ======================================================================== */
+
+$global-line-height: 30px !default;
+
+$global-spacing-unit: round($global-line-height) !default;
+
+$global-spacing-unit-factor-tiny: 0.25 !default;
+$global-spacing-unit-factor-very-small: 0.5 !default;
+$global-spaging-unit-factor-small: 0.75 !default;
+$global-spacing-unit-factor-large: 1.5 !default;
+$global-spacing-unit-factor-very-large: 2 !default;
+$global-spacing-unit-factor-huge: 4 !default;
+
+$spacingXXS: round($global-spacing-unit * $global-spacing-unit-factor-tiny);
+$spacingXS: round($global-spacing-unit * $global-spacing-unit-factor-very-small);
+$spacingS: round($global-spacing-unit * $global-spaging-unit-factor-small);
+$spacing: round($global-spacing-unit);
+$spacingL: round($global-spacing-unit * $global-spacing-unit-factor-large);
+$spacingXL: round($global-spacing-unit * $global-spacing-unit-factor-very-large);
+$spacingXXL: round($global-spacing-unit * $global-spacing-unit-factor-huge);

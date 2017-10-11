@@ -1,0 +1,49 @@
+app-cocktails-details {
+  width: 50%;
+  padding: $spacingXS;
+}
+
+.c-details__container {
+  text-align: center;
+  margin-bottom: $spacingS;
+}
+
+.c-app__item {
+  border: 1px solid $greyVL;
+  border-top: none;
+  color: $greyVD;
+  display: flex;
+  justify-content: space-between;
+  padding: $spacingXS;
+}
+
+.c-app__item:first-child {
+  border-top: 1px solid $greyVL;
+}
+
+.c-app__item:hover {
+  background-color: $greyVVL;
+}
+
+.c-app__items {
+  width: 100%;
+}
+
+.c-details__img {
+  width: 100%;
+}
+
+.c-app__name, .c-app__quantity {
+  padding: $spacingXXS $spacingXS;
+}
+
+.c-app__quantity {
+  background-color: $greyD;
+  color: $white;
+  border-radius: 16px;
+}
+
+.c-details--space {
+  display: flex;
+  justify-content: space-between;
+}

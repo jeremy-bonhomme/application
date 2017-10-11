@@ -1,0 +1,28 @@
+form( [formGroup] = "cocktailForm", (ngSubmit) = "createCocktail()" )
+  .c-edit__group
+    label Nom
+    input( formControlName = "name", type = "text", required )
+    div.c-edit-input__error( *ngIf = "name.invalid && ( name.dirty || name.touched )" )
+      div.c-edit-input__required( *ngIf="name.errors.required" ) Le nom est requis
+  .c-edit__group
+    label Lien de l'image
+    input( formControlName = "img", type = "text", required )
+    div.c-edit-input__error( *ngIf = "img.invalid && ( img.dirty || img.touched )" )
+      div.c-edit-input__required( *ngIf="img.errors.required" ) L'URL de l'image est requise
+  .c-edit__group
+    label Description
+    textarea( formControlName = "desc" )
+    div.c-edit-input__error( *ngIf = "desc.invalid && ( desc.dirty || desc.touched )" )
+      div.c-edit-input__required( *ngIf="desc.errors.required" ) La description est requise
+  .c-edit__container--formarray
+    button.c-ui-button--bordered.c-ui-button--t0( type = "button", (click) = "addIngredient()" ) Ajouter des ingrédients
+    .c-edit__formarray( formArrayName = "ingredients" )
+      .c-edit__formgroup( [formGroup] = "ingredient", *ngFor = "let ingredient of cocktailForm.get('ingredients').controls; let i = index" )
+        input( placeholder = "Nom de l'ingrédient {{ i + 1 }}", formControlName = "name" type = "text", required )
+        input( placeholder = "Quantité de l'ingrédient {{ i + 1 }}", formControlName = "quantity", type = "text", required )
+        button.c-ui-button__edit-cross( type = "button", (click) = "removeIngredient( i )", uiIcon = "close" )
+      p {{ message }}
+  .c-edit__container
+    button.c-ui-button--bordered.c-ui-button--t2W.c-ui-button--invalid( [disabled] = "cocktailForm.invalid" ) Sauvegarder
+    button.c-ui-button--bordered( [routerLink] = "['../']" ) Annuler
+  p( *ngIf = "isSubmitted" ) {{ add }}

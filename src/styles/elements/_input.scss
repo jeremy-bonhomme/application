@@ -1,0 +1,15 @@
+///* ========================================================================
+//   # ELEMENTS: INPUT
+//   ======================================================================== */
+
+input {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  line-height: inherit;
+  margin: 0;
+  outline: none;
+  width: 100%;
+
+  &:disabled { cursor: not-allowed; }
+}

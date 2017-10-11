@@ -1,0 +1,39 @@
+///* ========================================================================
+//   # TOOLS: BG
+//   ======================================================================== */
+
+/**
+ * Ces mixins permettent de définir les couleurs et couleurs de fond associées
+ */
+
+ @mixin bg( $color1, $color2 ) {
+  background-color: $color1;
+  color: $color2;
+}
+
+/* Défaut
+   ========================================================================== */
+
+@mixin bg0VD { @include bg( $greyVD, $white ); }
+@mixin bg0D { @include bg( $greyD, $white ); }
+@mixin bg0 { @include bg( $grey, $white ); }
+@mixin bg0L { @include bg( $greyL, $white ); }
+@mixin bg0VL { @include bg( $greyVL, $black ); }
+
+@mixin bg1W { @include bg( $white, $color1 ); }
+@mixin bg2W { @include bg( $white, $color2 ); }
+
+/* Thème
+   ========================================================================== */
+
+@mixin bg1VD { @include bg( $color1VD, $white ); }
+@mixin bg1D { @include bg( $color1D, $white ); }
+@mixin bg1 { @include bg( $color1, $white ); }
+@mixin bg1L { @include bg( $color1L, $white ); }
+@mixin bg1VL {  @include bg( $color1VL, $white ); }
+
+@mixin bg2VD { @include bg( $color2VD, $white ); }
+@mixin bg2D { @include bg( $color2D, $white ); }
+@mixin bg2 { @include bg( $color2, $white ); }
+@mixin bg2L { @include bg( $color2L, $white ); }
+@mixin bg2VL { @include bg( $color2VL, $white ); }
