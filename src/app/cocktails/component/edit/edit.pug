@@ -17,7 +17,7 @@ form( [formGroup] = "cocktailForm", (ngSubmit) = "createCocktail()" )
   .c-edit__container--formarray
     button.c-ui-button--bordered.c-ui-button--t0( type = "button", (click) = "addIngredient()" ) Ajouter des ingrédients
     .c-edit__formarray( formArrayName = "ingredients" )
-      .c-edit__formgroup( [formGroup] = "ingredient", *ngFor = "let ingredient of cocktailForm.get('ingredients').controls; let i = index" )
+      .c-edit__formgroup( [formGroup] = "ingredient", *ngFor = "let ingredient of formData.controls; let i = index" )
         input( placeholder = "Nom de l'ingrédient {{ i + 1 }}", formControlName = "name" type = "text", required )
         input( placeholder = "Quantité de l'ingrédient {{ i + 1 }}", formControlName = "quantity", type = "text", required )
         button.c-ui-button__edit-cross( type = "button", (click) = "removeIngredient( i )", uiIcon = "close" )

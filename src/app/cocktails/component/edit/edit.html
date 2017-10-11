@@ -24,7 +24,7 @@
   <div class="c-edit__container--formarray">
     <button class="c-ui-button--bordered c-ui-button--t0" type="button" (click)="addIngredient()">Ajouter des ingrédients</button>
     <div class="c-edit__formarray" formArrayName="ingredients">
-      <div class="c-edit__formgroup" [formGroup]="ingredient" *ngFor="let ingredient of cocktailForm.get('ingredients').controls; let i = index">
+      <div class="c-edit__formgroup" [formGroup]="ingredient" *ngFor="let ingredient of formData.controls; let i = index">
         <input placeholder="Nom de l'ingrédient {{ i + 1 }}" formControlName="name" type="text" required="required"/>
         <input placeholder="Quantité de l'ingrédient {{ i + 1 }}" formControlName="quantity" type="text" required="required"/>
         <button class="c-ui-button__edit-cross" type="button" (click)="removeIngredient( i )" uiIcon="close"></button>

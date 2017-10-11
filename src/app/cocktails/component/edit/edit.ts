@@ -80,4 +80,6 @@ export class CocktailsEditC implements OnInit {
     ( <FormArray> this.cocktailForm.get( 'ingredients' ) ).removeAt( i );
     return( this.message = '');
   }
+
+  get formData() { return <FormArray> this.cocktailForm.get( 'ingredients' ); }
 }
