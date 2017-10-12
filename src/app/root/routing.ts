@@ -8,14 +8,12 @@ import { AppC } from 'app/main/component/app';
 import { PanierC } from 'app/panier/component/panier/panier';
 
 const APP_ROUTES: Route [] = [
-  { path: '', pathMatch: 'full', redirectTo: '' },
   { component: PanierC, path: 'panier' },
   { children: [
     { component: CocktailsEditC, path: 'nouveau-cocktail' },
     { component: CocktailsDetailsC, path: ':i' },
     { component: CocktailsEditC, path: ':i/editer-le-cocktail' },
     { component: CocktailsC, path: '' },
-    { path: '**', redirectTo: 'cocktails' },
   ], component: CocktailsContainerC, path: '' },
   { path: '**', redirectTo: '' },
 ];
