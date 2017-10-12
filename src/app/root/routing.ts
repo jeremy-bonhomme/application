@@ -8,7 +8,7 @@ import { AppC } from 'app/main/component/app';
 import { PanierC } from 'app/panier/component/panier/panier';
 
 const APP_ROUTES: Route [] = [
-  { path: '', pathMatch: 'full', redirectTo: 'cocktails' },
+  { path: '', pathMatch: 'full', redirectTo: '' },
   { component: PanierC, path: 'panier' },
   { children: [
     { component: CocktailsEditC, path: 'nouveau-cocktail' },
@@ -16,8 +16,8 @@ const APP_ROUTES: Route [] = [
     { component: CocktailsEditC, path: ':i/editer-le-cocktail' },
     { component: CocktailsC, path: '' },
     { path: '**', redirectTo: 'cocktails' },
-  ], component: CocktailsContainerC, path: 'cocktails' },
-  { path: '**', redirectTo: 'cocktails' },
+  ], component: CocktailsContainerC, path: '' },
+  { path: '**', redirectTo: '' },
 ];
 
 export const appRouting = RouterModule.forRoot( APP_ROUTES );
