@@ -15,7 +15,6 @@ const APP_ROUTES: Route [] = [
     { component: CocktailsEditC, path: ':i/editer-le-cocktail' },
     { component: CocktailsC, path: '' },
   ], component: CocktailsContainerC, path: '' },
-  { path: '**', redirectTo: '' },
 ];
 
 export const appRouting = RouterModule.forRoot( APP_ROUTES );
