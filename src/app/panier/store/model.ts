@@ -1,6 +1,6 @@
 export class Ingredient {
   public constructor(
-    public name: string,
+    public nom: string,
     public quantity: string,
   )  { }
 }

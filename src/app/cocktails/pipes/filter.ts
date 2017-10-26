@@ -6,7 +6,6 @@ import { Cocktail } from 'app/cocktails/store/model';
   name: 'appFilter',
 } )
 export class FilterP implements PipeTransform {
-
   public transform( cocktail: Cocktail[], search: string, i: number ): Cocktail[] | undefined {
     if ( !search.length ) {
       return( cocktail );

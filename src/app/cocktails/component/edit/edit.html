@@ -2,39 +2,66 @@
 <form [formGroup]="cocktailForm" (ngSubmit)="createCocktail()">
   <div class="c-edit__group">
     <label>Nom</label>
-    <input formControlName="name" type="text" required="required"/>
+    <div class="c-edit-input">
+      <input formControlName="name" required="required" type="text"/><span class="c-edit-input__success" *ngIf="name.valid"></span><span class="c-edit-input__remove" *ngIf="name.invalid &amp;&amp; name.dirty"></span>
+    </div>
     <div class="c-edit-input__error" *ngIf="name.invalid &amp;&amp; ( name.dirty || name.touched )">
-      <div class="c-edit-input__required" *ngIf="name.errors.required">Le nom est requis</div>
+      <div class="c-edit-input__required" *ngIf="name.errors.charInvalid">{{ characterMessage }}</div>
+      <div class="c-edit-input__required" *ngIf="name.errors.isInvalid">{{ forbiddenWordsMessage }}</div>
+      <div class="c-edit-input__required" *ngIf="name.errors.nullField">{{ nullMessage }}</div>
     </div>
   </div>
   <div class="c-edit__group">
     <label>Lien de l'image</label>
-    <input formControlName="img" type="text" required="required"/>
+    <div class="c-edit-input">
+      <input formControlName="img" required="required" type="text"/><span class="c-edit-input__success" *ngIf="img.valid"></span><span class="c-edit-input__remove" *ngIf="img.invalid &amp;&amp; img.dirty"></span>
+    </div>
     <div class="c-edit-input__error" *ngIf="img.invalid &amp;&amp; ( img.dirty || img.touched )">
-      <div class="c-edit-input__required" *ngIf="img.errors.required">L'URL de l'image est requise</div>
+      <div class="c-edit-input__required" *ngIf="img.errors.isInvalid">{{ forbiddenWordsMessage }}</div>
+      <div class="c-edit-input__required" *ngIf="img.errors.nullField">{{ nullMessage }}</div>
     </div>
   </div>
   <div class="c-edit__group">
     <label>Description</label>
-    <textarea formControlName="desc"></textarea>
+    <div class="c-edit-input">
+      <textarea formControlName="desc"></textarea><span class="c-edit-input__success" *ngIf="desc.valid"></span><span class="c-edit-input__remove" *ngIf="desc.invalid &amp;&amp; desc.dirty"></span>
+    </div>
     <div class="c-edit-input__error" *ngIf="desc.invalid &amp;&amp; ( desc.dirty || desc.touched )">
-      <div class="c-edit-input__required" *ngIf="desc.errors.required">La description est requise</div>
+      <div class="c-edit-input__required" *ngIf="desc.errors.isInvalid">{{ forbiddenWordsMessage }}</div>
+      <div class="c-edit-input__required" *ngIf="desc.errors.nullField">{{ nullMessage }}</div>
     </div>
   </div>
   <div class="c-edit__container--formarray">
     <button class="c-ui-button--bordered c-ui-button--t0" type="button" (click)="addIngredient()">Ajouter des ingrédients</button>
     <div class="c-edit__formarray" formArrayName="ingredients">
       <div class="c-edit__formgroup" [formGroup]="ingredient" *ngFor="let ingredient of formData.controls; let i = index">
-        <input placeholder="Nom de l'ingrédient {{ i + 1 }}" formControlName="name" type="text" required="required"/>
-        <input placeholder="Quantité de l'ingrédient {{ i + 1 }}" formControlName="quantity" type="text" required="required"/>
-        <button class="c-ui-button__edit-cross" type="button" (click)="removeIngredient( i )" uiIcon="close"></button>
+        <div class="c-edit-input__formgroup">
+          <div class="c-edit-input">
+            <input formControlName="nom" placeholder="Nom de l'ingrédient {{ i + 1 }}" required="required" type="text"/><span class="c-edit-input__success" *ngIf="formData.controls[ i ].get( 'nom').valid"></span><span class="c-edit-input__remove" *ngIf="formData.controls[ i ].get( 'nom').invalid &amp;&amp; formData.controls[ i ].get( 'nom').dirty"></span>
+          </div>
+          <div class="c-edit-input__error" *ngIf="formData.controls[ i ].get( 'nom').invalid &amp;&amp; ( formData.controls[ i ].get( 'nom').dirty || formData.controls[ i ].get( 'nom').touched )">
+            <div class="c-edit-input__required" *ngIf="formData.controls[ i ].get( 'nom' ).hasError( 'charInvalid' )">{{ characterMessage }}</div>
+            <div class="c-edit-input__required" *ngIf="formData.controls[ i ].get( 'nom' ).hasError( 'isInvalid' )">{{ forbiddenWordsMessage }}</div>
+            <div class="c-edit-input__required" *ngIf="formData.controls[ i ].get( 'nom' ).hasError( 'nullField' )">{{ nullMessage }}</div>
+          </div>
+        </div>
+        <div class="c-edit-input__formgroup">
+          <div class="c-edit-input">
+            <input formControlName="quantity" placeholder="Quantité de l'ingrédient {{ i + 1 }}" required="required" type="text"/><span class="c-edit-input__success" *ngIf="formData.controls[ i ].get( 'quantity').valid"></span><span class="c-edit-input__remove" *ngIf="formData.controls[ i ].get( 'quantity').invalid &amp;&amp; formData.controls[ i ].get( 'quantity').dirty"></span>
+          </div>
+          <div class="c-edit-input__error" *ngIf="formData.controls[ i ].get( 'quantity' ).invalid &amp;&amp; ( formData.controls[ i ].get( 'quantity' ).dirty || formData.controls[ i ].get( 'quantity' ).touched )">
+            <div class="c-edit-input__required" *ngIf="formData.controls[ i ].get( 'quantity' ).hasError( 'isInvalid' )">{{ forbiddenWordsMessage }}</div>
+            <div class="c-edit-input__required" *ngIf="formData.controls[ i ].get( 'quantity' ).hasError( 'nullField' )">{{ nullMessage }}</div>
+          </div>
+          <button class="c-ui-button__edit-cross" (click)="removeIngredient( i )" type="button" uiIcon="close"></button>
+        </div>
       </div>
-      <p>{{ message }}</p>
+      <p class="c-edit-bg-grey" *ngIf="this.message !== ''">{{ message }}</p>
     </div>
   </div>
   <div class="c-edit__container">
     <button class="c-ui-button--bordered c-ui-button--t2W c-ui-button--invalid" [disabled]="cocktailForm.invalid">Sauvegarder</button>
     <button class="c-ui-button--bordered" [routerLink]="['../']">Annuler</button>
   </div>
-  <p *ngIf="isSubmitted">{{ add }}</p>
+  <p class="c-edit-bg-green" *ngIf="isSubmitted">{{ add }}</p>
 </form>

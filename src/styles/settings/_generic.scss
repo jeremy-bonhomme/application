@@ -1,7 +1,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 101%;
 }
 
 body, section, nav, article, aside,
@@ -12,4 +11,9 @@ q, data, time, sub, sup, span,
 form, fieldset, legend, label, input,
 button, select, datalist, optgroup, option, textarea {
   font-family: $pt-sans;
+}
+
+app-cocktails, app-cocktails-details, app-cocktail-edit, app-cocktails-list {
+  padding: $spacingXS;
+  width: 50%;
 }

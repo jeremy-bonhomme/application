@@ -1,13 +1,15 @@
 .c-list__container
   .c-list__items
-  input.c-form__input( placeholder = "Filtrer les cocktails par nom", type = "text", [(ngModel)] = "search" )
+  input.c-form__input( (focus) = "removeMessage()", placeholder = "Filtrer les cocktails par nom", type = "text", [(ngModel)] = "search" )
   .c-list__wrap( id = "{{ i }}", *ngFor = "let cocktail of cocktails | appFilter:search ; let i = index;" )
     .c-list__fitler( *ngIf = "search" )
       a.c-list__item( [routerLink] = "[i]", routerLinkActive = "is-active" ) {{ cocktail.name }}
     .c-list__fitler( *ngIf = "search === ''" )
-      .c-list__condition( *ngIf = "cocktail !== null && cocktail.name !== ''" )
+      .c-list__condition( *ngIf = "cocktail !== null && cocktail.name !== '' && i === 0 || i === 1 || i === 2" )
+        a.c-list__item( (click) = "removeMessage()", [routerLink] = "[i]", routerLinkActive = "is-active" ) {{ cocktail.name }}
+      .c-list__condition( *ngIf = "cocktail !== null && cocktail.name !== '' && i !== 0 && i !== 1 && i !==  2" )
         button.c-ui-button__list-cross( type = "button", uiIcon = "close", (click) = "removeCocktail( cocktail, i )" )
-        a.c-list__item( [routerLink] = "[i]", routerLinkActive = "is-active" ) {{ cocktail.name }}
+        a.c-list__item( (click) = "removeMessage()", [routerLink] = "[i]", routerLinkActive = "is-active" ) {{ cocktail.name }}
 .c-list__container
   button.c-ui-button--bordered( routerLink = "nouveau-cocktail" )  Ajouter un cocktail
-p {{ remove }}
+p.c-edit-bg-green( *ngIf = "this.remove != ''") {{ remove }}

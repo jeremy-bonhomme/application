@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { CocktailS } from 'app/cocktails/service';
 
@@ -7,10 +7,4 @@ import { CocktailS } from 'app/cocktails/service';
   selector: 'app-cocktails-container',
   templateUrl: './container.html',
 } )
-export class CocktailsContainerC implements OnInit {
-
-  public constructor() { }
-
-  public ngOnInit(): void { }
-
-}
+export class CocktailsContainerC { }

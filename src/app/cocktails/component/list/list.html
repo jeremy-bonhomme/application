@@ -1,12 +1,13 @@
 
 <div class="c-list__container">
   <div class="c-list__items"></div>
-  <input class="c-form__input" placeholder="Filtrer les cocktails par nom" type="text" [(ngModel)]="search"/>
+  <input class="c-form__input" (focus)="removeMessage()" placeholder="Filtrer les cocktails par nom" type="text" [(ngModel)]="search"/>
   <div class="c-list__wrap" id="{{ i }}" *ngFor="let cocktail of cocktails | appFilter:search ; let i = index;">
     <div class="c-list__fitler" *ngIf="search"><a class="c-list__item" [routerLink]="[i]" routerLinkActive="is-active">{{ cocktail.name }}</a></div>
     <div class="c-list__fitler" *ngIf="search === ''">
-      <div class="c-list__condition" *ngIf="cocktail !== null &amp;&amp; cocktail.name !== ''">
-        <button class="c-ui-button__list-cross" type="button" uiIcon="close" (click)="removeCocktail( cocktail, i )"></button><a class="c-list__item" [routerLink]="[i]" routerLinkActive="is-active">{{ cocktail.name }}</a>
+      <div class="c-list__condition" *ngIf="cocktail !== null &amp;&amp; cocktail.name !== '' &amp;&amp; i === 0 || i === 1 || i === 2"><a class="c-list__item" (click)="removeMessage()" [routerLink]="[i]" routerLinkActive="is-active">{{ cocktail.name }}</a></div>
+      <div class="c-list__condition" *ngIf="cocktail !== null &amp;&amp; cocktail.name !== '' &amp;&amp; i !== 0 &amp;&amp; i !== 1 &amp;&amp; i !==  2">
+        <button class="c-ui-button__list-cross" type="button" uiIcon="close" (click)="removeCocktail( cocktail, i )"></button><a class="c-list__item" (click)="removeMessage()" [routerLink]="[i]" routerLinkActive="is-active">{{ cocktail.name }}</a>
       </div>
     </div>
   </div>
@@ -14,4 +15,4 @@
 <div class="c-list__container">
   <button class="c-ui-button--bordered" routerLink="nouveau-cocktail"> Ajouter un cocktail</button>
 </div>
-<p>{{ remove }}</p>
+<p class="c-edit-bg-green" *ngIf="this.remove != ''">{{ remove }}</p>

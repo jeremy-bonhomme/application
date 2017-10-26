@@ -23,5 +23,4 @@ export class IngredientListC implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

@@ -1,3 +1,4 @@
+import { ModuleWithProviders } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
 import { CocktailsContainerC } from 'app/cocktails/component/container/container';
@@ -19,4 +20,4 @@ const APP_ROUTES: Route [] = [
   { path: '**', redirectTo: 'cocktails' },
 ];
 
-export const appRouting = RouterModule.forRoot( APP_ROUTES );
+export const appRouting: ModuleWithProviders = RouterModule.forRoot( APP_ROUTES );

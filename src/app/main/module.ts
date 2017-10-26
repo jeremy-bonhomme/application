@@ -13,9 +13,7 @@ import { AppC } from './component/app';
 
 @NgModule( {
   bootstrap: [ AppC ],
-  declarations: [
-    AppC,
-  ],
+  declarations: [ AppC ],
   imports: [
     appRouting,
     BrowserModule,

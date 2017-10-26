@@ -1,10 +1,15 @@
-
-nav.c-nav
+nav.c-nav( [class.is-open] = "isOpen" )
   a.c-nav__logo( routerLink = "/" )
     img( src = "assets/images/cocktails-logo.svg" )
-  .c-nav__container
+  .c-nav__icon( (click) = "toggleNav()", [class.is-open] = "isOpen" )
+    span
+    span
+    span
+    span
+  .c-nav__container( [class.is-open] = "isOpen" )
     ul.c-nav__list
       li.c-nav__item
-        a.c-nav__link( routerLink = "/cocktails", routerLinkActive = "is-active" ) Cocktails
+        a.c-nav__link( (click) = "toggleNav()", routerLink = "/cocktails", routerLinkActive = "is-active" ) Cocktails
       li.c-nav__item
-        a.c-nav__link( routerLink = "/panier", routerLinkActive = "is-active" ) Panier
+        a.c-nav__link( (click) = "toggleNav()", routerLink = "/panier", routerLinkActive = "is-active" ) Panier
+.c-nav__overlay( [class.is-open] = "isOpen" )

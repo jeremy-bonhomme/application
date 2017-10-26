@@ -11,8 +11,10 @@ import { Ingredient } from 'app/panier/store/model';
   templateUrl: './details.html',
 })
 export class CocktailsDetailsC implements OnInit {
+  public alert: string = '';
   public cocktail: Cocktail;
   public i: number;
+  public message: number = 0;
 
   public constructor( protected _activatedRoute: ActivatedRoute, protected _cocktailS: CocktailS, protected _panierS: PanierS ) { }
 
@@ -26,7 +28,12 @@ export class CocktailsDetailsC implements OnInit {
   }
 
   public addPanier( ingredients: Ingredient[] ): void {
-    this._panierS.addIngredients( ingredients );
+    if ( this.message < 5 ) {
+      this._panierS.addIngredients( ingredients );
+      this.message++;
+    } else {
+      this.alert = 'Vous ne pouvez pas ajouter davantage de cocktail';
+    }
   }
 
   public getUrl(): string[] {

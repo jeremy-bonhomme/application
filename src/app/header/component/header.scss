@@ -4,10 +4,14 @@
   justify-content: space-between;
   background-color: $greyVVL;
   padding: $spacingS;
+  position: relative;
 }
 
 .c-nav__container {
+  @include translateY;
   padding: $spacingS;
+  position: relative;
+  top: 50%;
 }
 
 .c-nav__item {
@@ -17,52 +21,46 @@
 }
 
 .c-nav__link {
-  position: relative;
   cursor: pointer;
-}
-
-.c-nav__link.is-active {
-  color: $color2;
-}
-
-.c-nav__link.is-active:before {
-  width: 100%;
-  background-color: $color2;
+  position: relative;
 }
 
 .c-nav__link:before {
+  @include transition;
+  background-color: $color2D;
+  bottom: -10px;
   content: '';
   display: block;
-  width: 0;
   height: 2px;
-  background-color: $color2D;
-  position: absolute;
-  bottom: -10px;
   left: 0;
-  transition: all 0.4s ease-in-out;
+  position: absolute;
+  width: 0;
 }
 
 .c-nav__link:hover:before {
+  @include transition;
   width: 100%;
-  transition: all 0.2s ease-in-out;
+}
+
+.c-nav__link.is-active { color: $color2; }
+
+.c-nav__link.is-active:before {
+  background-color: $color2;
+  width: 100%;
 }
 
 .c-nav__list {
-  height: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 100%;
 }
 
 .c-nav__logo {
   display: block;
   height: 100%;
-  width: 160px;
   overflow: hidden;
-}
-.c-nav__logo img {
-  width: 100%;
+  width: 160px;
 }
 
-.c-nav__toggler {
-  display: none;
-}
+.c-nav__logo img { width: 100%; }
+.c-nav__overlay { display: none; }

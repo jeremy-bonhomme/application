@@ -14,7 +14,7 @@ import { Cocktail } from 'app/cocktails/store/model';
 export class CocktailsListC implements OnInit {
   public cocktails: Cocktail[];
   public isActive: number;
-  public remove: string;
+  public remove: string = '';
   public search: string = '';
 
   public constructor( protected _cocktailS: CocktailS, protected http: Http ) { }
@@ -28,6 +28,10 @@ export class CocktailsListC implements OnInit {
   public removeCocktail( cocktail: Cocktail, i: number ): void {
     this.cocktails[ i ] = { desc: '', img: '', ingredients: [], name: '' };
     this._cocktailS.updateCocktail( this.cocktails[ i ] );
-    this.remove = 'Le cocktail ' + cocktail.name + ' a bien été supprimé';
+    this.remove = `Le cocktail ${ cocktail.name } a bien été supprimé`;
+  }
+
+  public removeMessage(): void {
+    this.remove = '';
   }
 }

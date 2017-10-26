@@ -1,4 +1,4 @@
-div( *ngIf = "cocktail" )
+.c-details__wrapper( *ngIf = "cocktail" )
   .c-details__container
     img.c-details__img( [src] = "cocktail.img", [alt] = "cocktail.name" )
     h3.c-list__title {{ cocktail.name }}
@@ -7,8 +7,10 @@ div( *ngIf = "cocktail" )
   .c-details__container
     .c-app__items
       a.c-app__item( *ngFor = "let ingredient of cocktail.ingredients")
-        span.c-app__name {{ ingredient.name }}
+        span.c-app__name {{ ingredient.nom }}
         span.c-app__quantity {{ ingredient.quantity }}
   .c-details__container.c-details--space
-    button.c-ui-button--t2W.c-ui-button--bordered( [routerLink] = "getUrl()" ) Éditer le cocktail {{ cocktail.name }}
-    button.c-ui-button--bordered( (click) = "addPanier( cocktail.ingredients) " ) Ajouter au panier
+    button.c-ui-button--t2W.c-ui-button--bordered( [routerLink] = "getUrl()" ) Éditer le cocktail
+    button.c-ui-button--bordered( (click) = "addPanier( cocktail.ingredients ) " ) Ajouter au panier
+    .c-details__bounce( *ngIf = "this.message !== 0" ) {{ message }}
+  .c-details__alert( *ngIf = "this.alert !== ''" ) {{ alert }}

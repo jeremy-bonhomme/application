@@ -1,47 +1,20 @@
-app-cocktail-edit {
-  width: 50%;
-  padding: $spacingXS;
+.c-edit-bg-green {
+  background-color: $colorSuccess;
+  color: $white;
+  margin: 0 0 $spacing 0;
+  padding: 15px;
 }
 
-input, textarea {
-  margin: $spacingXS 0 $spacingXS 0;
-  padding: $spacingXS;
-  border: 1px solid $greyVL;
-  min-width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-input {
-  font-size: 16px;
-}
-
-label {
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
-  border: 1px solid $colorError;
-}
-
-input.ng-touched.ng-valid, textarea.ng-touched.ng-valid {
-  border: 1px solid $colorSuccess;
-}
-
-.c-form__input.ng-touched.ng-valid.ng-pristine {
-  border: 1px solid $greyVL;
-}
-
-textarea {
-  min-height: 200px;
-  resize:none;
+.c-edit-bg-grey {
+  background-color: $greyVL;
+  padding: 15px;
 }
 
 .c-edit__container {
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  margin-bottom: $spacingS;
+  width: 100%;
 }
 
 .c-edit__container--formarray {
@@ -50,54 +23,103 @@ textarea {
   margin-bottom: $spacingS;
 }
 
-.c-edit__formarray {
-  margin-top: $spacingS;
-}
-
-.c-edit__group {
-  width: 100%;
-}
+.c-edit__formarray { margin-top: $spacingS; }
 
 .c-edit__formgroup {
+  align-items: start;
   display: flex;
   justify-content: space-between;
-  align-items: end;
   position: relative;
 }
 
-.c-edit__formgroup input {
+.c-edit__group { width: 100%; }
+
+.c-edit-input {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: $spacingXS 0 $spacingXS 0;
+  position: relative;
+}
+
+.c-edit-input__formgroup {
   min-width: 48%;
   max-width: 48%;
 }
 
 .c-edit-input__required {
-  color: $colorError;
+  @include animationOpacity;
+  background-color: $colorError;
+  color: $white;
   margin: 0 0 $spacing 0;
+  padding: 15px;
 }
+
+.c-edit-input__success, .c-edit-input__remove {
+  @include rotatePositive180;
+  bottom: 0;
+  height: 3px;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+
+.c-edit-input__success:after, .c-edit-input__remove:after, .c-edit-input__success:before, .c-edit-input__remove:before {
+  background-color: $colorSuccess;
+  top: -1px;
+  content: '';
+  height: 3px;
+  position: absolute;
+  width: 0;
+}
+
+.c-edit-input__success:after {
+  @include animationMove;
+  left: 50%;
+}
+
+.c-edit-input__remove:after {
+  @include animationRemove;
+  right: 50%;
+}
+
+.c-edit-input__success:before {
+  @include animationMove;
+  right: 50%;
+}
+
+.c-edit-input__remove:before {
+  @include animationRemove;
+  left: 50%;
+}
+
+.c-edit__formgroup:first-child .c-ui-button__edit-cross { display: none; }
+.c-form__input.ng-dirty.ng-valid { border-bottom: 1px solid $greyVL; }
 
 .c-ui-button__edit-cross {
   background-color: $colorError;
   border: 1px solid $colorError;
   position: absolute;
-  top: -6px;
   right: -30px;
+  top: -6px;
   padding: $spacingXXS;
+  z-index: 3;
 }
 
-.c-edit__formgroup:first-child .c-ui-button__edit-cross {
-  display: none;
-}
-
-.c-ui-button__edit-cross:hover {
-  color: $colorError;
-}
-
-form.ng-invalid .c-ui-button--invalid {
-  cursor: not-allowed;
-}
+.c-ui-button__edit-cross:hover { color: $colorError; }
+form.ng-invalid .c-ui-button--invalid { cursor: not-allowed; }
 
 form.ng-invalid .c-ui-button--invalid:hover {
   border: 1px solid transparent;
   color: $white;
   background-color: $colorError;
+}
+
+input, textarea {
+  border: 1px solid $greyVL;
+  box-sizing: border-box;
+  min-width: 100%;
+  max-width: 100%;
+  padding: $spacingXS;
+  position: relative;
 }

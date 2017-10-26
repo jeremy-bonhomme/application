@@ -5,9 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderC } from './component/header';
 
 @NgModule( {
-  declarations: [
-    HeaderC,
-  ],
+  declarations: [ HeaderC ],
   exports: [ HeaderC ],
   imports: [
     CommonModule,

@@ -1,0 +1,83 @@
+///* ========================================================================
+//   # SETTINGS: SPACING
+//   ======================================================================== */
+
+$r0: rotate( 0 );
+$r45: rotate( 45deg );
+$r180: rotate( 180deg );
+$rn45: rotate( -45deg );
+$tYr: translateY( -50% ) rotate( 0deg );
+$tS: all .3s ease-in-out;
+$tY0: translateY( 0 );
+$tYn50: translateY( -50% );
+
+@mixin rotateNull {
+  -webkit-transform: $r0;
+  -moz-transform: $r0;
+  -o-transform: $r0;
+  transform: $r0;
+}
+
+@mixin rotatePositive45 {
+  -webkit-transform: $r45;
+  -moz-transform: $r45;
+  -o-transform: $r45;
+  transform: $r45;
+}
+
+@mixin rotatePositive180 {
+  -webkit-transform: $r180;
+  -moz-transform: $r180;
+  -o-transform: $r180;
+  transform: $r180;
+}
+
+@mixin rotateNegative {
+  -webkit-transform: $rn45;
+  -moz-transform: $rn45;
+  -o-transform: $rn45;
+  transform: $rn45;
+}
+
+@mixin transition {
+  -webkit-transition: $tS;
+  -moz-transition: $tS;
+  -o-transition: $tS;
+  transition: $tS;
+}
+
+@mixin translateY {
+  -webkit-transform: $tYn50;
+  -moz-transform: $tYn50;
+  -o-transform: $tYn50;
+  transform: $tYn50;
+}
+
+@mixin translate0 {
+  -webkit-transform: $tY0;
+  -moz-transform: $tY0;
+  -o-transform: $tY0;
+  transform: $tY0;
+}
+
+@mixin translateRotate {
+  -webkit-transform: $tYr;
+  -moz-transform: $tYr;
+  -o-transform: $tYr;
+  transform: $tYr;
+}
+
+@mixin animationOpacity {
+  animation: opacity 1s;
+  animation-fill-mode: forwards;
+}
+
+@mixin animationMove {
+  animation: move 1s;
+  animation-fill-mode: forwards;
+}
+
+@mixin animationRemove {
+  animation: remove 1s;
+  animation-fill-mode: forwards;
+}

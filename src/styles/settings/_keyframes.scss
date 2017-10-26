@@ -1,0 +1,27 @@
+///* ========================================================================
+//   # SETTINGS: KEYFRAMES
+//   ======================================================================== */
+
+@keyframes bounce {
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  }
+}
+
+@keyframes move {
+  0% { width: 0; }
+  100% { width: 50%; }
+}
+
+@keyframes opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes remove {
+  0% { width: 50%; }
+  100% { width: 0; }
+}

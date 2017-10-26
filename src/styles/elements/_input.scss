@@ -6,10 +6,12 @@ input {
   background: transparent;
   border: none;
   font-family: inherit;
+  font-size: 16px;
   line-height: inherit;
   margin: 0;
   outline: none;
   width: 100%;
+  z-index: 2;
 
   &:disabled { cursor: not-allowed; }
 }

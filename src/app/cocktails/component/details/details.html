@@ -1,5 +1,5 @@
 
-<div *ngIf="cocktail">
+<div class="c-details__wrapper" *ngIf="cocktail">
   <div class="c-details__container"><img class="c-details__img" [src]="cocktail.img" [alt]="cocktail.name"/>
     <h3 class="c-list__title">{{ cocktail.name }}</h3>
   </div>
@@ -7,10 +7,12 @@
     <p class="c-details__desc">{{ cocktail.desc }}</p>
   </div>
   <div class="c-details__container">
-    <div class="c-app__items"><a class="c-app__item" *ngFor="let ingredient of cocktail.ingredients"><span class="c-app__name">{{ ingredient.name }}</span><span class="c-app__quantity">{{ ingredient.quantity }}</span></a></div>
+    <div class="c-app__items"><a class="c-app__item" *ngFor="let ingredient of cocktail.ingredients"><span class="c-app__name">{{ ingredient.nom }}</span><span class="c-app__quantity">{{ ingredient.quantity }}</span></a></div>
   </div>
   <div class="c-details__container c-details--space">
-    <button class="c-ui-button--t2W c-ui-button--bordered" [routerLink]="getUrl()">Éditer le cocktail {{ cocktail.name }}</button>
-    <button class="c-ui-button--bordered" (click)="addPanier( cocktail.ingredients) ">Ajouter au panier</button>
+    <button class="c-ui-button--t2W c-ui-button--bordered" [routerLink]="getUrl()">Éditer le cocktail</button>
+    <button class="c-ui-button--bordered" (click)="addPanier( cocktail.ingredients ) ">Ajouter au panier</button>
+    <div class="c-details__bounce" *ngIf="this.message !== 0">{{ message }}</div>
   </div>
+  <div class="c-details__alert" *ngIf="this.alert !== ''">{{ alert }}</div>
 </div>

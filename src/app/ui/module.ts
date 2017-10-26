@@ -8,9 +8,7 @@ import { UiIconDI } from 'app/ui/directives/icon';
   declarations: [
     UiIconDI,
   ],
-  exports: [
-    UiIconDI,
-  ],
+  exports: [ UiIconDI ],
   imports: [
     CommonModule,
     HttpClientModule,

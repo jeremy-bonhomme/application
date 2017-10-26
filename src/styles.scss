@@ -1,8 +1,10 @@
 // SETTINGS
 @import 'styles/settings/colors';
 @import 'styles/settings/fonts';
-@import 'styles/settings/generic';
 @import 'styles/settings/spacing';
+@import 'styles/settings/generic';
+@import 'styles/settings/variables';
+@import 'styles/settings/keyframes';
 
 // TOOLS
 @import 'styles/tools/bg';
@@ -15,12 +17,12 @@
 @import 'styles/elements/a';
 @import 'styles/elements/button';
 @import 'styles/elements/input';
+@import 'styles/elements/label';
 @import 'styles/elements/textarea';
 @import 'styles/elements/ul';
 
 // COMPONENTS
 @import 'styles/components/ui.button';
-@import 'app/main/component/app';
 @import 'app/header/component/header';
 @import 'app/cocktails/component/container/container';
 @import 'app/cocktails/component/default/default';
@@ -28,4 +30,6 @@
 @import 'app/cocktails/component/edit/edit';
 @import 'app/cocktails/component/list/list';
 @import 'app/panier/component/ingredient/list';
-@import 'app/panier/component/panier/panier';
+
+// RESPONSIVE
+@import 'styles/responsive/responsive';

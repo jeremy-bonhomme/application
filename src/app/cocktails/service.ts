@@ -7,7 +7,6 @@ import { Ingredient } from 'app/panier/store/model';
 
 @Injectable()
 export class CocktailS {
-
   public cocktails: BehaviorSubject<Cocktail[]> = new BehaviorSubject( null );
 
   public constructor( protected http: Http ) {
@@ -17,7 +16,7 @@ export class CocktailS {
   public addCocktail( cocktail: Cocktail ): void {
     const cocktails: Cocktail[] = this.cocktails.value.slice();
     cocktails.push( new Cocktail ( cocktail.desc, cocktail.img, cocktail.ingredients
-             .map( ( ingredient ) => new Ingredient ( ingredient.name, ingredient.quantity ) ), cocktail.name ) );
+             .map( ( ingredient ) => new Ingredient ( ingredient.nom, ingredient.quantity ) ), cocktail.name ) );
     this.cocktails.next( cocktails );
     this.save();
   }

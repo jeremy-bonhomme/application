@@ -1,11 +1,37 @@
-@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|PT+Sans:400,400i,700,700i');
-
-$pt-sans: 'PT Sans', sans-serif;
-$lora-serif: 'Lora', serif;
 
 ///* ========================================================================
 //   # SETTINGS: FONTS
 //   ======================================================================== */
+
+@font-face {
+  font-family: 'pt_sans_b';
+  src: url('./assets/fonts/pt_sans-web-bold-webfont.eot');
+  src: url('./assets/fonts/pt_sans-web-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('./assets/fonts/pt_sans-web-bold-webfont.woff2') format('woff2'),
+       url('./assets/fonts/pt_sans-web-bold-webfont.woff') format('woff'),
+       url('./assets/fonts/pt_sans-web-bold-webfont.ttf') format('truetype'),
+       url('./assets/fonts/pt_sans-web-bold-webfont.svg#pt_sansbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'pt_sans';
+  src: url('./assets/fonts/pt_sans-web-regular-webfont.eot');
+  src: url('./assets/fonts/pt_sans-web-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('./assets/fonts/pt_sans-web-regular-webfont.woff2') format('woff2'),
+       url('./assets/fonts/pt_sans-web-regular-webfont.woff') format('woff'),
+       url('./assets/fonts/pt_sans-web-regular-webfont.ttf') format('truetype'),
+       url('./assets/fonts/pt_sans-web-regular-webfont.svg#pt_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$pt-sans: 'pt_sans', sans-serif;
+$pt-sans-b: 'pt_sans_b', sans-serif;
+
+/* Font icon
+   ========================================================================== */
 
 $icomoon-font-path: "assets/fonts" !default;
 

@@ -1,28 +1,56 @@
 form( [formGroup] = "cocktailForm", (ngSubmit) = "createCocktail()" )
   .c-edit__group
     label Nom
-    input( formControlName = "name", type = "text", required )
-    div.c-edit-input__error( *ngIf = "name.invalid && ( name.dirty || name.touched )" )
-      div.c-edit-input__required( *ngIf="name.errors.required" ) Le nom est requis
+    .c-edit-input
+      input( formControlName = "name", required, type = "text" )
+      span.c-edit-input__success( *ngIf = "name.valid" )
+      span.c-edit-input__remove( *ngIf = "name.invalid && name.dirty" )
+    .c-edit-input__error( *ngIf = "name.invalid && ( name.dirty || name.touched )" )
+      .c-edit-input__required( *ngIf = "name.errors.charInvalid" ) {{ characterMessage }}
+      .c-edit-input__required( *ngIf = "name.errors.isInvalid" ) {{ forbiddenWordsMessage }}
+      .c-edit-input__required( *ngIf = "name.errors.nullField" ) {{ nullMessage }}
   .c-edit__group
     label Lien de l'image
-    input( formControlName = "img", type = "text", required )
-    div.c-edit-input__error( *ngIf = "img.invalid && ( img.dirty || img.touched )" )
-      div.c-edit-input__required( *ngIf="img.errors.required" ) L'URL de l'image est requise
+    .c-edit-input
+      input( formControlName = "img", required, type = "text" )
+      span.c-edit-input__success( *ngIf = "img.valid" )
+      span.c-edit-input__remove( *ngIf = "img.invalid && img.dirty" )
+    .c-edit-input__error( *ngIf = "img.invalid && ( img.dirty || img.touched )" )
+      .c-edit-input__required( *ngIf = "img.errors.isInvalid" ) {{ forbiddenWordsMessage }}
+      .c-edit-input__required( *ngIf = "img.errors.nullField" ) {{ nullMessage }}
   .c-edit__group
     label Description
-    textarea( formControlName = "desc" )
-    div.c-edit-input__error( *ngIf = "desc.invalid && ( desc.dirty || desc.touched )" )
-      div.c-edit-input__required( *ngIf="desc.errors.required" ) La description est requise
+    .c-edit-input
+      textarea( formControlName = "desc" )
+      span.c-edit-input__success( *ngIf = "desc.valid" )
+      span.c-edit-input__remove( *ngIf = "desc.invalid && desc.dirty" )
+    .c-edit-input__error( *ngIf = "desc.invalid && ( desc.dirty || desc.touched )" )
+      .c-edit-input__required( *ngIf = "desc.errors.isInvalid" ) {{ forbiddenWordsMessage }}
+      .c-edit-input__required( *ngIf = "desc.errors.nullField" ) {{ nullMessage }}
   .c-edit__container--formarray
     button.c-ui-button--bordered.c-ui-button--t0( type = "button", (click) = "addIngredient()" ) Ajouter des ingrédients
     .c-edit__formarray( formArrayName = "ingredients" )
       .c-edit__formgroup( [formGroup] = "ingredient", *ngFor = "let ingredient of formData.controls; let i = index" )
-        input( placeholder = "Nom de l'ingrédient {{ i + 1 }}", formControlName = "name" type = "text", required )
-        input( placeholder = "Quantité de l'ingrédient {{ i + 1 }}", formControlName = "quantity", type = "text", required )
-        button.c-ui-button__edit-cross( type = "button", (click) = "removeIngredient( i )", uiIcon = "close" )
-      p {{ message }}
+        .c-edit-input__formgroup
+          .c-edit-input
+            input( formControlName = "nom", placeholder = "Nom de l'ingrédient {{ i + 1 }}", required, type = "text" )
+            span.c-edit-input__success( *ngIf = "formData.controls[ i ].get( 'nom').valid" )
+            span.c-edit-input__remove( *ngIf = "formData.controls[ i ].get( 'nom').invalid && formData.controls[ i ].get( 'nom').dirty" )
+          .c-edit-input__error( *ngIf = "formData.controls[ i ].get( 'nom').invalid && ( formData.controls[ i ].get( 'nom').dirty || formData.controls[ i ].get( 'nom').touched )" )
+            .c-edit-input__required( *ngIf = "formData.controls[ i ].get( 'nom' ).hasError( 'charInvalid' )" ) {{ characterMessage }}
+            .c-edit-input__required( *ngIf = "formData.controls[ i ].get( 'nom' ).hasError( 'isInvalid' )" ) {{ forbiddenWordsMessage }}
+            .c-edit-input__required( *ngIf = "formData.controls[ i ].get( 'nom' ).hasError( 'nullField' )" ) {{ nullMessage }}
+        .c-edit-input__formgroup
+          .c-edit-input
+            input( formControlName = "quantity", placeholder = "Quantité de l'ingrédient {{ i + 1 }}", required, type = "text" )
+            span.c-edit-input__success( *ngIf = "formData.controls[ i ].get( 'quantity').valid" )
+            span.c-edit-input__remove( *ngIf = "formData.controls[ i ].get( 'quantity').invalid && formData.controls[ i ].get( 'quantity').dirty" )
+          .c-edit-input__error( *ngIf = "formData.controls[ i ].get( 'quantity' ).invalid && ( formData.controls[ i ].get( 'quantity' ).dirty || formData.controls[ i ].get( 'quantity' ).touched )" )
+            .c-edit-input__required( *ngIf = "formData.controls[ i ].get( 'quantity' ).hasError( 'isInvalid' )" ) {{ forbiddenWordsMessage }}
+            .c-edit-input__required( *ngIf = "formData.controls[ i ].get( 'quantity' ).hasError( 'nullField' )" ) {{ nullMessage }}
+          button.c-ui-button__edit-cross( (click) = "removeIngredient( i )", type = "button", uiIcon = "close" )
+      p.c-edit-bg-grey( *ngIf = "this.message !== ''") {{ message }}
   .c-edit__container
     button.c-ui-button--bordered.c-ui-button--t2W.c-ui-button--invalid( [disabled] = "cocktailForm.invalid" ) Sauvegarder
     button.c-ui-button--bordered( [routerLink] = "['../']" ) Annuler
-  p( *ngIf = "isSubmitted" ) {{ add }}
+  p.c-edit-bg-green( *ngIf = "isSubmitted" ) {{ add }}

@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
 })
-export class HeaderC implements OnInit {
+export class HeaderC {
+  public isOpen: boolean;
 
-  public constructor() { }
-
-  public ngOnInit(): void { }
-
+  public toggleNav(): void {
+    this.isOpen = !this.isOpen;
+  }
 }

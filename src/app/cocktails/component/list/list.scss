@@ -1,61 +1,39 @@
-app-cocktails-list {
-  width: 50%;
-  padding: $spacingXS;
-}
-
-.c-form__input {  
-  margin-top: 0;
-}
-
-.c-form__input.ng-touched.ng-valid {
-  border: 1px solid $greyVL;
-}
+.c-form__input { margin-top: 0; }
+.c-form__input.ng-touched.ng-valid { border: 1px solid $greyVL; }
 
 .c-list__container {
-  text-align: center;
   margin-bottom: $spacingS;
+  text-align: center;
 }
 
 .c-list__item {
-  display: block;
-  position: relative;
-  padding: $spacingS 0;
   border-bottom: 2px solid $greyVL;
   color: $greyVD;
+  display: block;
+  padding: $spacingS 0;
+  position: relative;
 }
 
-.c-list__item:hover {
-  background-color: $greyVVL;
-}
+.c-list__item:hover { background-color: $greyVVL; }
 
 .c-list__item.is-active {
   background-color: $color1L;
   color: white;
 }
 
-.c-list__item.is-active {
-  border-bottom: 2px solid $color1L;
-}
-
-.c-list__remove {
-  margin-top: $spacingS;
-}
-
-.c-list__wrap {
-  position: relative;
-}
+.c-list__item.is-active { border-bottom: 2px solid $color1L; }
+.c-list__remove { margin-top: $spacingS; }
+.c-list__wrap { position: relative; }
 
 .c-ui-button__list-cross {
+  @include translateY;
   background-color: $white;
   border: 1px solid transparent;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  color: $grey;
   left: -40px;
   padding: 0;
-  color: $grey;
+  position: absolute;
+  top: 50%;
 }
 
-.c-ui-button__list-cross:hover {
-  color: $colorError;
-}
+.c-ui-button__list-cross:hover { color: $colorError; }

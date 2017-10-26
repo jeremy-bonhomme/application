@@ -1,5 +1,7 @@
 .c-ingredients__container {
-  width: 1200px;
+  box-sizing: border-box;
   margin: 0 auto;
+  max-width: 1200px;
   padding: $spacing;
+  width: 100%;
 }

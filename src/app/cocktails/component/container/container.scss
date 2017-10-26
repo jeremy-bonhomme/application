@@ -1,10 +1,10 @@
-.c-app__row {
-  width: 100%;
-}
+.c-app__row { width: 100%; }
 
 .c-app__container {
-  width: 1200px;
-  margin: 0 auto;
-  padding: $spacing;
+  box-sizing: border-box;
   display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: $spacing;
+  width: 100%;
 }
