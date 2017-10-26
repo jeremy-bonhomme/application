@@ -14,9 +14,7 @@ const APP_ROUTES: Route [] = [
   { path: 'cocktails', component: CocktailsContainerC, children: [
     { path: '', component: CocktailsC },
     { path: 'nouveau-cocktail', component: CocktailsEditC },
-    { path: ':i', component: CocktailsDetailsC, children: [
-      { path: '**', redirectTo: 'cocktails' },
-    ] },
+    { path: ':i', component: CocktailsDetailsC },
     { path: ':i/editer-le-cocktail', component: CocktailsEditC },
   ] },
   { path: '**', redirectTo: 'cocktails' },
