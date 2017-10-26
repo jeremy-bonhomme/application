@@ -8,7 +8,7 @@
       .c-list__condition( *ngIf = "cocktail !== null && cocktail.name !== '' && i === 0 || i === 1 || i === 2" )
         a.c-list__item( (click) = "removeMessage()", [routerLink] = "[i]", routerLinkActive = "is-active" ) {{ cocktail.name }}
       .c-list__condition( *ngIf = "cocktail !== null && cocktail.name !== '' && i !== 0 && i !== 1 && i !==  2" )
-        button.c-ui-button__list-cross( type = "button", uiIcon = "close", (click) = "removeCocktail( cocktail, i )" )
+        button.c-ui-button__list-cross( [routerLink] = "cocktails", type = "button", uiIcon = "close", (click) = "removeCocktail( cocktail, i )" )
         a.c-list__item( (click) = "removeMessage()", [routerLink] = "[i]", routerLinkActive = "is-active" ) {{ cocktail.name }}
 .c-list__container
   button.c-ui-button--bordered( routerLink = "nouveau-cocktail" )  Ajouter un cocktail

@@ -10,7 +10,8 @@
         span.c-app__name {{ ingredient.nom }}
         span.c-app__quantity {{ ingredient.quantity }}
   .c-details__container.c-details--space
-    button.c-ui-button--t2W.c-ui-button--bordered( [routerLink] = "getUrl()" ) Éditer le cocktail
-    button.c-ui-button--bordered( (click) = "addPanier( cocktail.ingredients ) " ) Ajouter au panier
-    .c-details__bounce( *ngIf = "this.message !== 0" ) {{ message }}
-  .c-details__alert( *ngIf = "this.alert !== ''" ) {{ alert }}
+    button.c-ui-button--t2W.c-ui-button--bordered( [routerLink] = "getUrl()", *ngIf = "cocktail.name !== ''" ) Éditer le cocktail
+    button.c-ui-button--bordered( (click) = "addPanier( cocktail.ingredients )", *ngIf = "cocktail.name !== ''" ) Ajouter au panier
+    .c-details__container( *ngIf = "cocktail.name === ''") Vous pouvez sélectionner un cocktail dans le liste, ajouter un nouveau cocktail, en supprimer un ou bien éditer celui que vous souhaitez. Les prermiers cocktails ne peuvent pas être supprimés.
+    .c-details__bounce( *ngIf = "this.message !== 0 && cocktail.name !== ''" ) {{ message }}
+  .c-details__alert( *ngIf = "this.alert !== '' && cocktail.name !== ''" ) {{ alert }}

@@ -7,7 +7,7 @@
     <div class="c-list__fitler" *ngIf="search === ''">
       <div class="c-list__condition" *ngIf="cocktail !== null &amp;&amp; cocktail.name !== '' &amp;&amp; i === 0 || i === 1 || i === 2"><a class="c-list__item" (click)="removeMessage()" [routerLink]="[i]" routerLinkActive="is-active">{{ cocktail.name }}</a></div>
       <div class="c-list__condition" *ngIf="cocktail !== null &amp;&amp; cocktail.name !== '' &amp;&amp; i !== 0 &amp;&amp; i !== 1 &amp;&amp; i !==  2">
-        <button class="c-ui-button__list-cross" type="button" uiIcon="close" (click)="removeCocktail( cocktail, i )"></button><a class="c-list__item" (click)="removeMessage()" [routerLink]="[i]" routerLinkActive="is-active">{{ cocktail.name }}</a>
+        <button class="c-ui-button__list-cross" [routerLink]="cocktails" type="button" uiIcon="close" (click)="removeCocktail( cocktail, i )"></button><a class="c-list__item" (click)="removeMessage()" [routerLink]="[i]" routerLinkActive="is-active">{{ cocktail.name }}</a>
       </div>
     </div>
   </div>

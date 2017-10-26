@@ -11,12 +11,14 @@ import { PanierC } from 'app/panier/component/panier/panier';
 const APP_ROUTES: Route [] = [
   { path: '', pathMatch: 'full', redirectTo: 'cocktails' },
   { component: PanierC, path: 'panier' },
-  { children: [
-    { component: CocktailsEditC, path: 'nouveau-cocktail' },
-    { component: CocktailsDetailsC, path: ':i' },
-    { component: CocktailsEditC, path: ':i/editer-le-cocktail' },
-    { component: CocktailsC, path: '' },
-  ], component: CocktailsContainerC, path: 'cocktails' },
+  { path: 'cocktails', component: CocktailsContainerC, children: [
+    { path: '', component: CocktailsC },
+    { path: 'nouveau-cocktail', component: CocktailsEditC },
+    { path: ':i', component: CocktailsDetailsC, children: [
+      { path: '**', redirectTo: 'cocktails' },
+    ] },
+    { path: ':i/editer-le-cocktail', component: CocktailsEditC },
+  ] },
   { path: '**', redirectTo: 'cocktails' },
 ];
 

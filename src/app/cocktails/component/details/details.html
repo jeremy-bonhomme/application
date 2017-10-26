@@ -10,9 +10,10 @@
     <div class="c-app__items"><a class="c-app__item" *ngFor="let ingredient of cocktail.ingredients"><span class="c-app__name">{{ ingredient.nom }}</span><span class="c-app__quantity">{{ ingredient.quantity }}</span></a></div>
   </div>
   <div class="c-details__container c-details--space">
-    <button class="c-ui-button--t2W c-ui-button--bordered" [routerLink]="getUrl()">Éditer le cocktail</button>
-    <button class="c-ui-button--bordered" (click)="addPanier( cocktail.ingredients ) ">Ajouter au panier</button>
-    <div class="c-details__bounce" *ngIf="this.message !== 0">{{ message }}</div>
+    <button class="c-ui-button--t2W c-ui-button--bordered" [routerLink]="getUrl()" *ngIf="cocktail.name !== ''">Éditer le cocktail</button>
+    <button class="c-ui-button--bordered" (click)="addPanier( cocktail.ingredients )" *ngIf="cocktail.name !== ''">Ajouter au panier</button>
+    <div class="c-details__container" *ngIf="cocktail.name === ''">Vous pouvez sélectionner un cocktail dans le liste, ajouter un nouveau cocktail, en supprimer un ou bien éditer celui que vous souhaitez. Les prermiers cocktails ne peuvent pas être supprimés.</div>
+    <div class="c-details__bounce" *ngIf="this.message !== 0 &amp;&amp; cocktail.name !== ''">{{ message }}</div>
   </div>
-  <div class="c-details__alert" *ngIf="this.alert !== ''">{{ alert }}</div>
+  <div class="c-details__alert" *ngIf="this.alert !== '' &amp;&amp; cocktail.name !== ''">{{ alert }}</div>
 </div>
